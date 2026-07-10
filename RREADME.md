@@ -27,6 +27,7 @@ groweasy-csv-importer/
     components/               UploadZone, PreviewTable, ProgressBar, ResultsTable, ThemeToggle
     lib/                      types.ts
   .gitignore
+  docker-compose.yml
   README.md
 ```
 
@@ -38,6 +39,7 @@ groweasy-csv-importer/
 - **CSV parsing**: `csv-parse`
 - **File upload**: `multer` (CSV-only, 10MB limit)
 - **Testing**: Vitest
+- **Containerization**: Docker, Docker Compose
 
 ## Local setup
 
@@ -63,6 +65,34 @@ npm run dev
 ```
 
 Runs on **http://localhost:3000**.
+
+## Local setup with Docker
+
+The fastest way to run the whole app — no need to install Node, npm, or manage two separate terminals.
+
+```bash
+export GEMINI_API_KEY=your_actual_key
+docker compose up --build
+```
+
+- Frontend: **http://localhost:3000**
+- Backend: **http://localhost:4000**
+
+To stop:
+
+```bash
+docker compose down
+```
+
+Environment variables can also be set via a `.env` file at the project root instead of `export` — Docker Compose picks it up automatically:
+
+```
+GEMINI_API_KEY=your_actual_key
+GEMINI_MODEL=gemini-2.5-flash
+BATCH_SIZE=25
+BATCH_CONCURRENCY=4
+BATCH_MAX_RETRIES=5
+```
 
 ## Environment variables
 
