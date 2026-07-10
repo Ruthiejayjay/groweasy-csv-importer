@@ -1,7 +1,7 @@
 export async function withRetry<T>(
   fn: () => Promise<T>,
   maxRetries: number,
-  baseDelayMs = 500,
+  baseDelayMs = 1500,
 ): Promise<T> {
   let lastError: unknown;
 
