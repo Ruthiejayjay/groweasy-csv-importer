@@ -6,6 +6,7 @@ import UploadZone from "@/components/UploadZone";
 import PreviewTable from "@/components/PreviewTable";
 import ProgressBar from "@/components/ProgressBar";
 import ResultsTable from "@/components/ResultsTable";
+import ThemeToggle from "@/components/ThemeToggle";
 import { ImportResult, ImportStep } from "@/lib/types";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:4000";
@@ -88,22 +89,25 @@ export default function Home() {
 
   return (
     <div className="max-w-3xl mx-auto px-4 py-10">
-      <div className="mb-7">
-        <h1 className="text-2xl font-semibold text-gray-900">
-          GrowEasy CSV importer
-        </h1>
-        <p className="text-sm text-gray-500 mt-1">
-          Upload any lead export and let AI map it to your CRM fields.
-        </p>
+      <div className="flex items-start justify-between mb-7">
+        <div>
+          <h1 className="text-2xl font-semibold text-gray-900 dark:text-gray-50">
+            GrowEasy CSV importer
+          </h1>
+          <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
+            Upload any lead export and let AI map it to your CRM fields.
+          </p>
+        </div>
+        <ThemeToggle />
       </div>
 
       {error && (
-        <div className="mb-4 bg-red-50 text-red-700 text-sm rounded-lg px-4 py-3">
+        <div className="mb-4 bg-red-50 dark:bg-red-950 text-red-700 dark:text-red-300 text-sm rounded-lg px-4 py-3">
           {error}
         </div>
       )}
 
-      <div className="bg-white border border-gray-200 rounded-xl p-6">
+      <div className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-xl p-6">
         {step === "upload" && (
           <UploadZone onFileSelected={handleFileSelected} />
         )}
@@ -114,7 +118,7 @@ export default function Home() {
             <div className="flex justify-end gap-3 mt-5">
               <button
                 onClick={handleReset}
-                className="px-5 py-2.5 text-sm font-semibold rounded-lg border border-gray-300 text-gray-700 hover:bg-gray-50"
+                className="px-5 py-2.5 text-sm font-semibold rounded-lg border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800"
               >
                 Choose a different file
               </button>
@@ -127,6 +131,7 @@ export default function Home() {
             </div>
           </>
         )}
+
         {step === "processing" && <ProgressBar rowCount={rows.length} />}
 
         {step === "results" && result && (
@@ -135,7 +140,7 @@ export default function Home() {
             <div className="flex justify-end mt-5">
               <button
                 onClick={handleReset}
-                className="px-5 py-2.5 text-sm font-semibold rounded-lg border border-gray-300 text-gray-700 hover:bg-gray-50"
+                className="px-5 py-2.5 text-sm font-semibold rounded-lg border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800"
               >
                 Import another file
               </button>

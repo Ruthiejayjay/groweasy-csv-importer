@@ -25,7 +25,11 @@ export default function UploadZone({ onFileSelected }: UploadZoneProps) {
   return (
     <div
       className={`flex flex-col items-center justify-center rounded-xl border-2 border-dashed px-6 py-16 text-center cursor-pointer transition-colors
-        ${isDragging ? "border-indigo-500 bg-indigo-50" : "border-gray-300 hover:border-indigo-400 hover:bg-gray-50"}`}
+  ${
+    isDragging
+      ? "border-indigo-500 bg-indigo-50 dark:bg-indigo-950"
+      : "border-gray-300 dark:border-gray-700 hover:border-indigo-400 hover:bg-gray-50 dark:hover:bg-gray-800"
+  }`}
       onClick={() => inputRef.current?.click()}
       onDragOver={(e) => {
         e.preventDefault();
@@ -40,10 +44,10 @@ export default function UploadZone({ onFileSelected }: UploadZoneProps) {
       role="button"
       tabIndex={0}
     >
-      <h3 className="text-base font-semibold text-gray-900">
+      <h3 className="text-base font-semibold text-gray-900 dark:text-gray-50">
         Drop your CSV here, or click to browse
       </h3>
-      <p className="mt-1 text-sm text-gray-500">
+      <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
         Facebook exports, Google Ads exports, spreadsheets, other CRM exports —
         any layout works
       </p>

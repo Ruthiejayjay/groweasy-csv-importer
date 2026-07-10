@@ -18,14 +18,14 @@ export default function ProgressBar({ rowCount }: ProgressBarProps) {
 
   return (
     <div className="text-center py-16">
-      <h3 className="text-base font-semibold text-gray-900">
+      <h3 className="text-base font-semibold text-gray-900 dark:text-gray-50">
         Mapping your CSV to GrowEasy CRM fields...
       </h3>
-      <p className="text-sm text-gray-500 mt-1">
+      <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
         Processing {rowCount} rows in batches. This can take a moment for larger
         files.
       </p>
-      <div className="w-full max-w-md mx-auto h-2 rounded-full bg-gray-200 mt-5 overflow-hidden">
+      <div className="w-full max-w-md mx-auto h-2 rounded-full bg-gray-200 dark:bg-gray-700 mt-5 overflow-hidden">
         <div
           className="h-full bg-indigo-600 transition-all duration-300 ease-out"
           style={{ width: `${width}%` }}
